@@ -6,23 +6,23 @@
         <groupId>de.loonymonkey</groupId>
         <artifactId>tasker</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>..</relativePath>
+        <relativePath>../..</relativePath>
     </parent>
 
-    <artifactId>tasker-swing-ui</artifactId>
+    <artifactId>tasker-backends-file</artifactId>
     <packaging>jar</packaging>
 
-    <name>Tasker :: Swing UI</name>
+    <name>Tasker :: Backends :: File</name>
 
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>tasker-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
