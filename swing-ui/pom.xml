@@ -18,8 +18,12 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>tasker-api</artifactId>
-            <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>tasker-backends-file</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

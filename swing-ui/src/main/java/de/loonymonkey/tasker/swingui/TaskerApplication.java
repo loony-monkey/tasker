@@ -1,7 +1,7 @@
 package de.loonymonkey.tasker.swingui;
 
+import de.loonymonkey.tasker.backend.file.HardcodedYamlFileProjectLoader;
 import de.loonymonkey.tasker.model.api.Project;
-import de.loonymonkey.tasker.model.impl.ImmutableProject;
 import de.loonymonkey.tasker.swingui.model.TaskNode;
 
 import javax.swing.BorderFactory;
@@ -69,8 +69,8 @@ public class TaskerApplication extends JDialog {
     }
 
     private void initModel() {
-        this.project = new ImmutableProject("Test");
-        this.taskTree.setModel(new DefaultTreeModel(new TaskNode(this.project)));
+        this.project = new HardcodedYamlFileProjectLoader().getProjectSingleton();
+        this.taskTree.setModel(new DefaultTreeModel(new TaskNode(null, this.project)));
     }
 
     private void onOK() {

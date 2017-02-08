@@ -3,38 +3,42 @@
  */
 package de.loonymonkey.tasker.swingui.model;
 
+import de.loonymonkey.tasker.model.api.Task;
 import de.loonymonkey.tasker.model.api.TaskListItem;
 
 import javax.swing.tree.TreeNode;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
 
 /**
  * @author Frank Scho&ouml;nheit
  */
 public class TaskNode implements TreeNode {
+    private final TaskNode parent;
     private final TaskListItem taskItem;
 
-    public TaskNode(final TaskListItem taskItem) {
+    public TaskNode(final TaskNode parent, final TaskListItem taskItem) {
+        this.parent = parent;
         this.taskItem = Objects.requireNonNull(taskItem, "|taskItem| must not be null!");
     }
 
     @Override
     public TreeNode getChildAt(int childIndex) {
-        // TODO
-        return null;
+        final Task subtask = this.taskItem.getSubtasks().get(childIndex);
+        return new TaskNode(this, subtask);
     }
 
     @Override
     public int getChildCount() {
-        // TODO
-        return 0;
+        return this.taskItem.getSubtasks().size();
     }
 
     @Override
     public TreeNode getParent() {
-        // TODO
-        return null;
+        return parent;
     }
 
     @Override
@@ -56,8 +60,20 @@ public class TaskNode implements TreeNode {
 
     @Override
     public Enumeration children() {
-        // TODO
-        return null;
+        final List<Task> subtasks = new ArrayList<>(this.taskItem.getSubtasks());
+        final Iterator<Task> taskIterator = subtasks.iterator();
+        return new Enumeration<TreeNode>() {
+
+            @Override
+            public boolean hasMoreElements() {
+                return taskIterator.hasNext();
+            }
+
+            @Override
+            public TreeNode nextElement() {
+                return new TaskNode(TaskNode.this, taskIterator.next());
+            }
+        };
     }
 
     @Override
