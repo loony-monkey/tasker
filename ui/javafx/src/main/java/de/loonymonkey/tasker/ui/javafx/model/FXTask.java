@@ -1,7 +1,7 @@
 /**
  * Created on 09.02.2017
  */
-package de.loonymonkey.tasker.ui.javafx;
+package de.loonymonkey.tasker.ui.javafx.model;
 
 import de.loonymonkey.tasker.model.api.TaskListItem;
 import org.apache.commons.lang3.NotImplementedException;
@@ -19,14 +19,14 @@ public class FXTask {
     }
 
     public void setTitle(final String title) {
-        throw new NotImplementedException("this class is immutable, actually");
+        throw new NotImplementedException("this class is immutable, currently.");
     }
 
     public String getTitle() {
         return this.task.getTitle();
     }
 
-//    public StringProperty titleProperty() {
-//        return title;
-//    }
+    public TaskListItem getTaskListItem() {
+        return this.task;
+    }
 }

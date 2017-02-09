@@ -5,9 +5,10 @@ package de.loonymonkey.tasker.ui.javafx;
 
 import de.loonymonkey.tasker.backend.file.HardcodedYamlFileProjectLoader;
 import de.loonymonkey.tasker.model.api.Project;
+import de.loonymonkey.tasker.ui.javafx.model.FXTask;
+import de.loonymonkey.tasker.ui.javafx.components.TaskTreeItem;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
@@ -18,7 +19,7 @@ import java.util.ResourceBundle;
 /**
  * @author Frank Scho&ouml;nheit
  */
-public class TaskerApplicationController implements Initializable {
+public class JavaFXApplicationController implements Initializable {
     private ResourceBundle resources;
 
     @FXML
@@ -33,7 +34,7 @@ public class TaskerApplicationController implements Initializable {
 
         final Project project = new HardcodedYamlFileProjectLoader().getProjectSingleton();
         final FXTask rootTask = new FXTask(project);
-        final TreeItem<FXTask> rootItem = new TreeItem<>(rootTask);
+        final TaskTreeItem rootItem = new TaskTreeItem(rootTask);
         viewTasks.setRoot(rootItem);
     }
 }
