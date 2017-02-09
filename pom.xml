@@ -66,5 +66,6 @@
         <module>api</module>
         <module>swing-ui</module>
         <module>backends</module>
+        <module>ui</module>
     </modules>
 </project>
