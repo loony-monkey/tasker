@@ -6,9 +6,9 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.loonymonkey.tasker.ui.javafx.JavaFXApplicationController">
    <children>
-      <TreeTableView fx:id="viewTasks" prefHeight="200.0" prefWidth="200.0">
+      <TreeTableView fx:id="viewTasks" prefHeight="400.0" prefWidth="600.0">
         <columns>
-          <TreeTableColumn fx:id="viewTaskTitle" editable="false" prefWidth="480.0" text="%task.title" />
+          <TreeTableColumn fx:id="viewTaskTitle" editable="false" maxWidth="-1.0" minWidth="400.0" prefWidth="-1.0" text="%task.title" />
         </columns>
       </TreeTableView>
    </children>
