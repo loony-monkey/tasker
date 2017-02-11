@@ -6,33 +6,15 @@
         <groupId>de.loonymonkey</groupId>
         <artifactId>tasker</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../..</relativePath>
+        <relativePath>..</relativePath>
     </parent>
 
-    <artifactId>tasker-backends-file</artifactId>
+    <artifactId>tasker-model</artifactId>
     <packaging>jar</packaging>
 
-    <name>Tasker :: Backends :: File</name>
+    <name>Tasker :: Model</name>
 
     <dependencies>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>tasker-model</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-yaml</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

@@ -9,38 +9,24 @@
         <relativePath>../..</relativePath>
     </parent>
 
-    <artifactId>tasker-backends-file</artifactId>
+    <artifactId>tasker-ui-swing</artifactId>
     <packaging>jar</packaging>
 
-    <name>Tasker :: Backends :: File</name>
+    <name>Tasker :: UI :: Swing</name>
 
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>tasker-model</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-yaml</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>tasker-backends-file</artifactId>
         </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

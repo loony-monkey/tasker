@@ -24,7 +24,12 @@
         <dependencies>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>tasker-api</artifactId>
+                <artifactId>tasker-model</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>tasker-model-impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -63,8 +68,7 @@
     </dependencyManagement>
 
     <modules>
-        <module>api</module>
-        <module>swing-ui</module>
+        <module>model</module>
         <module>backends</module>
         <module>ui</module>
     </modules>
