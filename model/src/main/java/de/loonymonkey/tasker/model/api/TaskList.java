@@ -8,7 +8,8 @@ import java.util.List;
 public interface TaskList {
     /**
      * returns an immutable view to the current sub tasks of the element.
-     * @return
+     *
+     * @return an immutable view to the current sub tasks of the element.
      */
     List<Task> getSubtasks();
 }

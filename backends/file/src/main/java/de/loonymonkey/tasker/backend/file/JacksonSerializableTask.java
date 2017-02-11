@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import de.loonymonkey.tasker.model.api.Task;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -18,6 +19,10 @@ class JacksonSerializableTask extends JacksonSerializableTaskContainer implement
     private String title;
     @JsonProperty
     private String notes;
+    @JsonProperty
+    private boolean completed;
+    @JsonProperty
+    private LocalDateTime completionDate;
 
     @SuppressWarnings("unused")
     private JacksonSerializableTask() {
@@ -42,5 +47,25 @@ class JacksonSerializableTask extends JacksonSerializableTaskContainer implement
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    @Override
+    public boolean isCompleted() {
+        return this.completed;
+    }
+
+    @Override
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
+    @Override
+    public LocalDateTime getCompletionDate() {
+        return this.completionDate;
+    }
+
+    @Override
+    public void setCompletionDate(LocalDateTime completionDate) {
+        this.completionDate = completionDate;
     }
 }

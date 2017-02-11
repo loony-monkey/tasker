@@ -26,11 +26,17 @@ public class JavaFXApplicationController implements Initializable {
     TreeTableView<FXTask> viewTasks;
     @FXML
     private TreeTableColumn<FXTask, String> viewTaskTitle;
+    @FXML
+    private TreeTableColumn<FXTask, Boolean> viewTaskCompleted;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.resources = resources;
+
+        viewTasks.setShowRoot(false);
+
         viewTaskTitle.setCellValueFactory(new TreeItemPropertyValueFactory<FXTask, String>("title"));
+        viewTaskCompleted.setCellValueFactory(new TreeItemPropertyValueFactory<FXTask, Boolean>("completed"));
 
         final Project project = new HardcodedYamlFileProjectLoader().getProjectSingleton();
         final FXTask rootTask = new FXTask(project);
