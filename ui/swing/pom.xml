@@ -23,12 +23,6 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>tasker-backends-file</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
 </project>

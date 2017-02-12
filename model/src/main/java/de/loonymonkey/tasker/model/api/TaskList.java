@@ -1,5 +1,6 @@
 package de.loonymonkey.tasker.model.api;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -11,5 +12,6 @@ public interface TaskList {
      *
      * @return an immutable view to the current sub tasks of the element.
      */
+    @NotNull
     List<Task> getSubtasks();
 }

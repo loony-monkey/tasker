@@ -5,12 +5,13 @@ package de.loonymonkey.tasker.ui.javafx;
 
 import de.loonymonkey.tasker.backend.file.HardcodedYamlFileProjectLoader;
 import de.loonymonkey.tasker.model.api.Project;
-import de.loonymonkey.tasker.ui.javafx.model.FXTask;
 import de.loonymonkey.tasker.ui.javafx.components.TaskTreeItem;
+import de.loonymonkey.tasker.ui.javafx.model.FXTask;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
+import javafx.scene.control.cell.CheckBoxTreeTableCell;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 
 import java.net.URL;
@@ -38,9 +39,15 @@ public class JavaFXApplicationController implements Initializable {
         viewTaskTitle.setCellValueFactory(new TreeItemPropertyValueFactory<FXTask, String>("title"));
         viewTaskCompleted.setCellValueFactory(new TreeItemPropertyValueFactory<FXTask, Boolean>("completed"));
 
+        viewTaskCompleted.setCellValueFactory(f -> f.getValue().getValue().completedProperty());
+        viewTaskCompleted.setCellFactory(tc -> new CheckBoxTreeTableCell<>());
+
         final Project project = new HardcodedYamlFileProjectLoader().getProjectSingleton();
-        final FXTask rootTask = new FXTask(project);
-        final TaskTreeItem rootItem = new TaskTreeItem(rootTask);
+        // Build an JavaFX representation of the project. Note there's currently no bi-directional relationship:
+        // Changes done to the JavaFX version are not reflected in the original project.
+        // TODO: change this...
+        final FXTask fxProject = FXTask.from(project);
+        final TaskTreeItem rootItem = new TaskTreeItem(fxProject);
         viewTasks.setRoot(rootItem);
     }
 }
