@@ -9,7 +9,6 @@ import de.loonymonkey.tasker.model.api.Project;
 /**
  * @author Frank Scho&ouml;nheit
  */
-@JsonPropertyOrder({"title", "notest", "subtasks"})
 class JacksonSerializableProject extends JacksonSerializableProjectItem implements Project {
     @SuppressWarnings("unused")
     private JacksonSerializableProject() {

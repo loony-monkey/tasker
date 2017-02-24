@@ -4,7 +4,6 @@
 package de.loonymonkey.tasker.backend.file;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import de.loonymonkey.tasker.model.api.Task;
 
 import java.time.LocalDateTime;
@@ -12,7 +11,6 @@ import java.time.LocalDateTime;
 /**
  * @author Frank Scho&ouml;nheit
  */
-@JsonPropertyOrder({"title", "notes", "subtasks"})
 class JacksonSerializableTask extends JacksonSerializableProjectItem implements Task {
     @JsonProperty
     private boolean completed;

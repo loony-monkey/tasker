@@ -6,6 +6,7 @@ package de.loonymonkey.tasker.backend.file;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import de.loonymonkey.tasker.model.api.ProjectItem;
 import de.loonymonkey.tasker.model.api.Task;
 import org.apache.commons.lang3.Validate;
@@ -20,6 +21,7 @@ import java.util.Optional;
  * @author Frank Scho&ouml;nheit
  */
 @JsonInclude(Include.NON_NULL)
+@JsonPropertyOrder({"title", "notes", "subtasks"})
 class JacksonSerializableProjectItem implements ProjectItem {
     @JsonProperty
     private String title;
