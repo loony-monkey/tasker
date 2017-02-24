@@ -10,11 +10,12 @@ import org.junit.Test;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Frank Scho&ouml;nheit
  */
-public class FXTaskTest {
+public class FXProjectItemTest {
     private static final String PROJECT_TITLE = "the coolest project ever!";
     private static final String TITLE = "BrumelForgami";
     private static final String NOTES = "HarpunigamoliSa";
@@ -25,7 +26,7 @@ public class FXTaskTest {
         // given
         final Task task = new TestTask(4);
         // when
-        final FXTask objectUnderTest = FXTask.from(task);
+        final FXProjectItem objectUnderTest = FXProjectItem.from(task);
         // then
         assertEquals(TITLE, objectUnderTest.getTitle());
     }
@@ -35,7 +36,7 @@ public class FXTaskTest {
         // given
         final Project project = new TestProject(2);
         // when
-        final FXTask objectUnderTest = FXTask.from(project);
+        final FXProjectItem objectUnderTest = FXProjectItem.from(project);
         // then
         assertEquals(PROJECT_TITLE, objectUnderTest.getTitle());
     }
@@ -47,7 +48,7 @@ public class FXTaskTest {
         final Project project = new TestProject(childCount);
 
         // when
-        final FXTask objectUnderTest = FXTask.from(project);
+        final FXProjectItem objectUnderTest = FXProjectItem.from(project);
 
         // then
         final List<Task> children = objectUnderTest.getSubtasks();
@@ -62,7 +63,7 @@ public class FXTaskTest {
         final Task task = new TestTask(childCount);
 
         // when
-        final FXTask objectUnderTest = FXTask.from(task);
+        final FXProjectItem objectUnderTest = FXProjectItem.from(task);
 
         // then
         final List<Task> children = objectUnderTest.getSubtasks();
@@ -75,9 +76,19 @@ public class FXTaskTest {
         // given
         final Task task = new TestTask(0);
         // when
-        final FXTask objectUnderTest = FXTask.from(task);
+        final FXProjectItem objectUnderTest = FXProjectItem.from(task);
         // then
-        assertEquals(NOTES, objectUnderTest.getNotes());
+        assertEquals(NOTES, objectUnderTest.getNotes().get());
+    }
+
+    @Test
+    public void when_constructing_from_project_notes_are_set() {
+        // given
+        final Project project = new TestProject(0);
+        // when
+        final FXProjectItem objectUnderTest = FXProjectItem.from(project);
+        // then
+        assertEquals(NOTES, objectUnderTest.getNotes().get());
     }
 
     @Test
@@ -87,7 +98,7 @@ public class FXTaskTest {
         task.setCompleted(true);
 
         // when
-        final FXTask objectUnderTest = FXTask.from(task);
+        final Task objectUnderTest = Task.class.cast(FXProjectItem.from(task));
 
         // then
         assertEquals(true, objectUnderTest.isCompleted());
@@ -100,7 +111,7 @@ public class FXTaskTest {
         task.setCompleted(false);
 
         // when
-        final FXTask objectUnderTest = FXTask.from(task);
+        final Task objectUnderTest = Task.class.cast(FXProjectItem.from(task));
 
         // then
         assertEquals(false, objectUnderTest.isCompleted());
@@ -111,7 +122,7 @@ public class FXTaskTest {
         // given
         final Task task = new TestTask(0);
         // when
-        final FXTask objectUnderTest = FXTask.from(task);
+        final Task objectUnderTest = Task.class.cast(FXProjectItem.from(task));
         // then
         assertEquals(COMPLETION_DATE, objectUnderTest.getCompletionDate());
     }
@@ -139,8 +150,8 @@ public class FXTaskTest {
         }
 
         @Override
-        public String getNotes() {
-            return NOTES;
+        public Optional<String> getNotes() {
+            return Optional.of(NOTES);
         }
 
         @Override
@@ -176,6 +187,11 @@ public class FXTaskTest {
         @Override
         public String getTitle() {
             return PROJECT_TITLE;
+        }
+
+        @Override
+        public Optional<String> getNotes() {
+            return Optional.of(NOTES);
         }
 
         @Override

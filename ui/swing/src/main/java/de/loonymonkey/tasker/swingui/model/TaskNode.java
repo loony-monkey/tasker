@@ -4,7 +4,7 @@
 package de.loonymonkey.tasker.swingui.model;
 
 import de.loonymonkey.tasker.model.api.Task;
-import de.loonymonkey.tasker.model.api.TaskListItem;
+import de.loonymonkey.tasker.model.api.ProjectItem;
 
 import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
@@ -18,9 +18,9 @@ import java.util.Objects;
  */
 public class TaskNode implements TreeNode {
     private final TaskNode parent;
-    private final TaskListItem taskItem;
+    private final ProjectItem taskItem;
 
-    public TaskNode(final TaskNode parent, final TaskListItem taskItem) {
+    public TaskNode(final TaskNode parent, final ProjectItem taskItem) {
         this.parent = parent;
         this.taskItem = Objects.requireNonNull(taskItem, "|taskItem| must not be null!");
     }

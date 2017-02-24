@@ -6,7 +6,7 @@ package de.loonymonkey.tasker.ui.javafx;
 import de.loonymonkey.tasker.backend.file.HardcodedYamlFileProjectLoader;
 import de.loonymonkey.tasker.model.api.Project;
 import de.loonymonkey.tasker.ui.javafx.components.TaskTreeItem;
-import de.loonymonkey.tasker.ui.javafx.model.FXTask;
+import de.loonymonkey.tasker.ui.javafx.model.FXProjectItem;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TreeTableColumn;
@@ -24,11 +24,11 @@ public class JavaFXApplicationController implements Initializable {
     private ResourceBundle resources;
 
     @FXML
-    TreeTableView<FXTask> viewTasks;
+    TreeTableView<FXProjectItem> viewTasks;
     @FXML
-    private TreeTableColumn<FXTask, String> viewTaskTitle;
+    private TreeTableColumn<FXProjectItem, String> viewTaskTitle;
     @FXML
-    private TreeTableColumn<FXTask, Boolean> viewTaskCompleted;
+    private TreeTableColumn<FXProjectItem, Boolean> viewTaskCompleted;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -36,8 +36,8 @@ public class JavaFXApplicationController implements Initializable {
 
         viewTasks.setShowRoot(false);
 
-        viewTaskTitle.setCellValueFactory(new TreeItemPropertyValueFactory<FXTask, String>("title"));
-        viewTaskCompleted.setCellValueFactory(new TreeItemPropertyValueFactory<FXTask, Boolean>("completed"));
+        viewTaskTitle.setCellValueFactory(new TreeItemPropertyValueFactory<FXProjectItem, String>("title"));
+        viewTaskCompleted.setCellValueFactory(new TreeItemPropertyValueFactory<FXProjectItem, Boolean>("completed"));
 
         viewTaskCompleted.setCellValueFactory(f -> f.getValue().getValue().completedProperty());
         viewTaskCompleted.setCellFactory(tc -> new CheckBoxTreeTableCell<>());
@@ -46,7 +46,7 @@ public class JavaFXApplicationController implements Initializable {
         // Build an JavaFX representation of the project. Note there's currently no bi-directional relationship:
         // Changes done to the JavaFX version are not reflected in the original project.
         // TODO: change this...
-        final FXTask fxProject = FXTask.from(project);
+        final FXProjectItem fxProject = FXProjectItem.from(project);
         final TaskTreeItem rootItem = new TaskTreeItem(fxProject);
         viewTasks.setRoot(rootItem);
     }

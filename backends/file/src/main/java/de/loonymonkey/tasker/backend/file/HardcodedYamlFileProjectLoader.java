@@ -28,13 +28,14 @@ public class HardcodedYamlFileProjectLoader {
 
     public static void main(final String[] args) throws IOException {
         final ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
-        final JacksonSerializableProject project = new JacksonSerializableProject("Things to be done");
+        final JacksonSerializableProject project = new JacksonSerializableProject("Things to be done", "do them!");
         final JacksonSerializableTask task = project.addSubtask("Do something!");
         task.setNotes("Really, it is utterly important that this is being done!");
         task.addSubtask("first, start it");
         task.addSubtask("then, finish it");
 
         final File file = getHardcodedProjectFile();
+        System.out.println("writing project to " + file.getAbsolutePath());
         mapper.writeValue(file, project);
     }
 

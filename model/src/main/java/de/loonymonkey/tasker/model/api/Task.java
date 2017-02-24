@@ -5,14 +5,7 @@ import java.time.LocalDateTime;
 /**
  * a task. Well, something which will represent a task when it's grown up.
  */
-public interface Task extends TaskListItem {
-    /**
-     * retrieves the notes associated with the task, if any
-     *
-     * @return retrieves the notes associated with the task, or null if no such notes exist currently.
-     */
-    String getNotes();
-
+public interface Task extends ProjectItem {
     /**
      * determines whether the task is already completed.
      *
