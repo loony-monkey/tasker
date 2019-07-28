@@ -1,6 +1,4 @@
-package de.loonymonkey.tasker.ui.javafx;/**
- * @author Frank Scho&ouml;nheit
- */
+package de.loonymonkey.tasker.ui.javafx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
