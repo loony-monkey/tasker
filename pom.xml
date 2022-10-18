@@ -19,7 +19,7 @@
         <dep.com.fasterxml.jackson.version>2.9.9</dep.com.fasterxml.jackson.version>
         <!-- dedicated sub-micro for jackson-databind, needed 'cause of security vulnerabilities, but not available for
              the other artifacts from the same group. -->
-        <dep.com.fasterxml.jackson.databind.version>2.9.9.2</dep.com.fasterxml.jackson.databind.version>
+        <dep.com.fasterxml.jackson.databind.version>2.13.4.1</dep.com.fasterxml.jackson.databind.version>
         <dep.commons-lang3.version>3.9</dep.commons-lang3.version>
         <dep.javax.validation.validation-api.version>2.0.1.Final</dep.javax.validation.validation-api.version>
     </properties>
